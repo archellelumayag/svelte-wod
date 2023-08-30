@@ -1,0 +1,35 @@
+:root {
+	--sticky-col-row: #ffffff;
+	--pagination-button: #f7fafd;
+	--client-header-bg: #f2f6fc;
+	--primary-color: #5e5e5e;
+	--secondary-color: #7e7e7e;
+	--primary-font: 'Poppins', sans-serif;
+	--primary-color-fixed: #5e5e5e;
+	--bg-input-color: #fff;
+	--bg-bodymode: #fff;
+	--bg-bodymode-secondary: #f7fafd;
+	--bg-purple-main: #7e63fb;
+	--border-main-color: #c5ccd6;
+	--box-shadow-1: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
+}
+
+[data-webmode='skeleton'] {
+	--sticky-col-row: #1b2739;
+	--pagination-button: #192436;
+	--primary-color: #f7fafd;
+	--secondary-color: #c3c3c3;
+	--client-header-bg: #1b2739;
+	--bg-input-color: #162132;
+	--bg-bodymode: #1b2739;
+	--bg-bodymode-secondary: #1b2739;
+	--border-main-color: rgba(255, 255, 255, 0.125);
+	--box-shadow-1: 0 0.15rem 1.75rem 0 rgb(0 0 0 / 15%);
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+		'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
+}
