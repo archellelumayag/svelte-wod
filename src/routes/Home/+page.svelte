@@ -348,7 +348,7 @@
 										<span>Purchase Amount</span>
 										<div class="flex relative">
 											<i
-												class="absolute z-10 text-[20px] fa-solid fa-dollar-sign mt-[10px] ms-[15px]"
+												class="absolute z-[1] text-[20px] fa-solid fa-dollar-sign mt-[10px] ms-[15px]"
 											/>
 											<input class="input variant-outline-secondary ps-[40px]" value="0" />
 										</div>
