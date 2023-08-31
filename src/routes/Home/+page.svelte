@@ -11,8 +11,27 @@
 		{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
 		{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
 		{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+		{ position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+		{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+		{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+		{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+		{ position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+		{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+		{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+		{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
 		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' }
 	];
+
+	let sum = 0;
+	for (let i = 0; i < sourceData.length; i++) {
+		sum += sourceData[i].weight;
+	}
+
+	// console.log(sum.toFixed(2));
+
+	// console.log(sourceData[0].name);
 	const tableSimple: TableSource = {
 		// A list of heading labels.
 		head: [
@@ -87,39 +106,32 @@
 		// Optional: A list of footer labels.
 		foot: ['Total', '', '<code class="code">5</code>']
 	};
+	let isCompound = true;
+	const compoundToggle = () => {
+		document.getElementById('compound-btn');
+		// const toggleBtn = document.getElementById('compound-btn');
+
+		// let toggleText = toggleBtn?.textContent;
+		// console.log(toggleText);
+		if (isCompound) {
+			document.getElementById('compound-btn').textContent = 'No Compound';
+		} else {
+			document.getElementById('compound-btn').textContent = 'Compound';
+		}
+		isCompound = !isCompound;
+		console.log(isCompound);
+	};
+
+	const riskOpt = [
+		{ name: 'Low', value: 'low' },
+		{ name: 'Medium', value: 'medium' },
+		{ name: 'High', value: 'high' }
+	];
 	const repeatPurchaseOpt = [
 		{ name: 'Daily', value: 'daily' },
 		{ name: 'Weekly', value: 'weekly' },
 		{ name: 'monthly', value: 'monthly' },
 		{ name: 'Every two months', value: 'every_two_months' }
-	];
-
-	const startingOpt = [
-		{ name: '6 Months', value: '6_mm' },
-		{ name: '1 Year', value: '1_yyyy' },
-		{ name: '2 Years', value: '2_yyyy' },
-		{ name: '3 Years', value: '3_yyyy' },
-		{ name: '4 Years', value: '4_yyyy' },
-		{ name: '5 Years', value: '5_yyyy' },
-		{ name: '6 Years', value: '6_yyyy' },
-		{ name: '7 Years', value: '7_yyyy' },
-		{ name: '8 Years', value: '8_yyyy' },
-		{ name: '9 Years', value: '9_yyyy' },
-		{ name: 'On specific date', value: 'custom_date' }
-	];
-	const months = [
-		{ name: 'January', sName: 'Jan', borderColor: 'border-[#b181a0]', mm: 1 },
-		{ name: 'Febuary', sName: 'Feb', borderColor: 'border-[#d7817d]', mm: 2 },
-		{ name: 'March', sName: 'Mar', borderColor: 'border-[#6c5100]', mm: 3 },
-		{ name: 'April', sName: 'Apr', borderColor: 'border-[#996500]', mm: 4 },
-		{ name: 'May', sName: 'May', borderColor: 'border-[#456f2c]', mm: 5 },
-		{ name: 'June', sName: 'Jun', borderColor: 'border-[#5c79a3]', mm: 6 },
-		{ name: 'July', sName: 'Jul', borderColor: 'border-[#959595]', mm: 7 },
-		{ name: 'August', sName: 'Aug', borderColor: 'border-[var(--text-color)]', mm: 8 },
-		{ name: 'September', sName: 'Sep', borderColor: 'border-[var(--text-color)]', mm: 9 },
-		{ name: 'October', sName: 'Oct', borderColor: 'border-[var(--text-color)]', mm: 10 },
-		{ name: 'November', sName: 'Nov', borderColor: 'border-[var(--text-color)]  ', mm: 11 },
-		{ name: 'December', sName: 'Dec', borderColor: 'border-[var(--text-color)]', mm: 12 }
 	];
 
 	const accumulateForOpt = [
@@ -135,7 +147,21 @@
 		{ name: '9 Years', value: '9_yyyy' }
 	];
 
-	let compareAssets = [
+	const startingOpt = [
+		{ name: '6 Months', value: '6_mm' },
+		{ name: '1 Year', value: '1_yyyy' },
+		{ name: '2 Years', value: '2_yyyy' },
+		{ name: '3 Years', value: '3_yyyy' },
+		{ name: '4 Years', value: '4_yyyy' },
+		{ name: '5 Years', value: '5_yyyy' },
+		{ name: '6 Years', value: '6_yyyy' },
+		{ name: '7 Years', value: '7_yyyy' },
+		{ name: '8 Years', value: '8_yyyy' },
+		{ name: '9 Years', value: '9_yyyy' },
+		{ name: 'On specific date', value: 'custom_date' }
+	];
+
+	const compareAssetsOpt = [
 		{ name: 'Yes', value: true },
 		{ name: 'No', value: false }
 	];
@@ -167,15 +193,38 @@
 		closeQuery: '.listbox-item'
 	};
 
-    let repeatPurchaseVal: string;
+	const riskPopup: PopupSettings = {
+		event: 'focus-click',
+		target: 'riskPopup',
+		placement: 'bottom',
+		closeQuery: '.listbox-item'
+	};
+
+	let repeatPurchaseName: string;
 	let accumulateVal: string;
 	let startingVal: string;
 	let compareVal: string;
+	let riskVal: string;
+
+	const months = [
+		{ name: 'January', sName: 'Jan', borderColor: 'border-[#b181a0]', mm: 1 },
+		{ name: 'Febuary', sName: 'Feb', borderColor: 'border-[#d7817d]', mm: 2 },
+		{ name: 'March', sName: 'Mar', borderColor: 'border-[#6c5100]', mm: 3 },
+		{ name: 'April', sName: 'Apr', borderColor: 'border-[#996500]', mm: 4 },
+		{ name: 'May', sName: 'May', borderColor: 'border-[#456f2c]', mm: 5 },
+		{ name: 'June', sName: 'Jun', borderColor: 'border-[#5c79a3]', mm: 6 },
+		{ name: 'July', sName: 'Jul', borderColor: 'border-[#959595]', mm: 7 },
+		{ name: 'August', sName: 'Aug', borderColor: 'border-[var(--text-color)]', mm: 8 },
+		{ name: 'September', sName: 'Sep', borderColor: 'border-[var(--text-color)]', mm: 9 },
+		{ name: 'October', sName: 'Oct', borderColor: 'border-[var(--text-color)]', mm: 10 },
+		{ name: 'November', sName: 'Nov', borderColor: 'border-[var(--text-color)]  ', mm: 11 },
+		{ name: 'December', sName: 'Dec', borderColor: 'border-[var(--text-color)]', mm: 12 }
+	];
 </script>
 
 <div class="mt-[83px]">
 	<section
-		class="home-section bg-section dca-card card bg-[#fff] relative pb-28 bg-fixed bg-repeat bg-[length:150%_100%] home-section-lightmode-before"
+		class="home-section bg-section card relative pb-28 bg-fixed bg-repeat bg-[length:150%_100%] home-section-lightmode-before"
 	>
 		<div class="content-wrapper max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
 			<div class="pt-[130px]">
@@ -209,9 +258,9 @@
 				<div class="grid mt-[50px] grid-cols-4 gap-5 lg:grid-cols-2 md:grid-cols-1">
 					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
 						<div
-							class="h-[70px] w-[70px] bg-[var(--primary-color)] rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
+							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
-							<!-- <font-awesome-icon :icon="['fas', 'dollar-sign']" class="text-[35px] text-[white]" /> -->
+							<i class="fa-solid fa-dollar-sign text-[35px] text-[white]" />
 						</div>
 						<div class="w-[auto] min-h-[130px] flex items-start pt-[15px] justify-end mr-5">
 							<div class="z-[2] text-end mb-[50px]">
@@ -222,9 +271,9 @@
 					</div>
 					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
 						<div
-							class="h-[70px] w-[70px] bg-[var(--primary-color)] rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
+							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
-							<!-- <font-awesome-icon :icon="['fas', 'chart-line']" class="text-[35px] text-[white]" /> -->
+							<i class="fa-solid fa-chart-line text-[35px] text-[white]" />
 						</div>
 						<div class="w-[auto] min-h-[130px] flex items-start pt-[15px] justify-end mr-5">
 							<div class="z-[2] text-end mb-[50px]">
@@ -236,12 +285,9 @@
 					</div>
 					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
 						<div
-							class="h-[70px] w-[70px] bg-[var(--primary-color)] rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
+							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
-							<!-- <font-awesome-icon
-								:icon="['fas', 'arrow-trend-down']"
-								class="text-[35px] text-[white]"
-							/> -->
+							<i class="fa-solid fa-arrow-trend-down text-[35px] text-[white]" />
 						</div>
 						<div class="w-[auto] min-h-[130px] flex items-start pt-[15px] justify-end mr-5">
 							<div class="z-[2] text-end">
@@ -252,16 +298,16 @@
 					</div>
 					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
 						<div
-							class="h-[70px] w-[70px] bg-[var(--primary-color)] rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
+							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
-							<!-- <font-awesome-icon :icon="['fab', 'bitcoin']" class="text-[35px] text-[white]" /> -->
+							<i class="fa-brands fa-bitcoin text-[35px] text-[white]" />
 						</div>
 						<div class="w-[auto] min-h-[130px] flex items-start pt-[15px] justify-end mr-5">
 							<div class="z-[2] text-end mt-[0]">
 								<label class="text-[20px] font-bold text-color">Buy Bitcoin</label>
 								<p class="text-color">On Etoro</p>
 								<br />
-								<!-- <Button label="Buy" class="p-button-success px-[18px] py-[10px] w-[100px]" /> -->
+								<button type="button" class="rounded-[5px] btn variant-filled-primary w-[100px] text-white">Buy</button>
 							</div>
 						</div>
 					</div>
@@ -269,24 +315,43 @@
 				<div class="grid second-section grid-cols-4 lg:grid-cols-1 mt-[1.3rem] gap-5">
 					<div class="h-[auto] col-start-1 col-end-2 lg:col-auto rounded-[5px]">
 						<div class="mb-5 flex justify-center items-center">
-							<span class="p-buttonset w-[100%]">
+							<span class="p-buttonset w-[100%] relative">
 								<div class="btn-group variant-filled-secondary w-[100%]">
-									<button class="w-[50%]">Compound</button>
-									<button class="w-[50%]">Risk</button>
+									<button class="w-[50%]" on:click={compoundToggle}>
+										<i class="fa-solid fa-repeat" /> <span id="compound-btn">Compound</span>
+									</button>
+									<!-- <button class="w-[50%] ">Risk</button> -->
+									<button
+										class="btn variant-filled-secondary rounded-l-none w-[50%] justify-around"
+										use:popup={riskPopup}
+									>
+										<span class="capitalize">{riskVal ?? 'Risk'}</span>
+									</button>
+								</div>
+								<div
+									class="card shadow-xl w-[50%] py-2 z-[5] w-container absolute"
+									data-popup="riskPopup"
+								>
+									<ListBox rounded="rounded-none">
+										{#each riskOpt as { name, value }}
+											<ListBoxItem bind:group={riskVal} {name} {value}>{name}</ListBoxItem>
+										{/each}
+									</ListBox>
 								</div>
 							</span>
 						</div>
 						<div class="dca-card card bg-[#fff] text-color rounded-[5px]">
-							<div class="bg-[var(--surface-a)] rounded-[5px] py-[10px]">
+							<div class="rounded-[5px] py-[10px]">
 								<h2 class="ps-5 mb-6">DCA Settings</h2>
 								<div class="px-5 mb-[10px]">
 									<label class="label">
-										<span>Input</span>
-										<input
-											class="input variant-outline-secondary"
-											type="text"
-											placeholder="Input"
-										/>
+										<span>Purchase Amount</span>
+										<div class="flex relative">
+											<i
+												class="absolute z-10 text-[20px] fa-solid fa-dollar-sign mt-[10px] ms-[15px]"
+											/>
+											<input class="input variant-outline-secondary ps-[40px]" value="0" />
+										</div>
 									</label>
 								</div>
 								<div class="px-5 mb-[10px] relative">
@@ -295,16 +360,16 @@
 										class="btn variant-filled-secondary container justify-between hover:z-[1]"
 										use:popup={repeatPurchasePopup}
 									>
-										<span class="capitalize">{repeatPurchaseVal ?? 'Select One'}</span>
+										<span class="capitalize">{repeatPurchaseName ?? 'Select One'}</span>
 									</button>
 
 									<div
 										class="card shadow-xl py-2 z-[5] w-container absolute w-[90%]"
 										data-popup="repeatPurchasePopup"
 									>
-										<ListBox>
+										<ListBox rounded="rounded-none">
 											{#each repeatPurchaseOpt as { name, value }}
-												<ListBoxItem bind:group={repeatPurchaseVal} {name} {value}
+												<ListBoxItem bind:group={repeatPurchaseName} {name} {value}
 													>{name}</ListBoxItem
 												>
 											{/each}
@@ -324,10 +389,9 @@
 										class="card shadow-xl z-[5] py-2 absolute w-[90%]"
 										data-popup="accumulatePopup"
 									>
-										<ListBox>
+										<ListBox rounded="rounded-none">
 											{#each accumulateForOpt as { name, value }}
-												<ListBoxItem bind:group={accumulateVal} {name} {value}
-                                                >{name}</ListBoxItem>
+												<ListBoxItem bind:group={accumulateVal} {name} {value}>{name}</ListBoxItem>
 											{/each}
 										</ListBox>
 									</div>
@@ -345,7 +409,7 @@
 										class="card shadow-xl z-[5] py-2 absolute w-[90%]"
 										data-popup="startingPopup"
 									>
-										<ListBox>
+										<ListBox rounded="rounded-none">
 											{#each startingOpt as { name, value }}
 												<ListBoxItem bind:group={startingVal} {name} {value}>{name}</ListBoxItem>
 											{/each}
@@ -365,12 +429,11 @@
 										class="card shadow-xl py-2 z-[5] absolute w-[90%]"
 										data-popup="compareAssetsPopup"
 									>
-										<ListBox>
-											{#each compareAssets as { name, value }}
+										<ListBox rounded="rounded-none">
+											{#each compareAssetsOpt as { name, value }}
 												<ListBoxItem bind:group={compareVal} {name} {value}>{name}</ListBoxItem>
 											{/each}
 										</ListBox>
-										<!-- <div class="arrow bg-surface-100-800-token" /> -->
 									</div>
 								</div>
 							</div>
@@ -394,7 +457,7 @@
 								<div class="text-center">
 									<label class="text-[16px]">{sName}</label>
 									<div
-										class="h-[90px] mt-[5px] bg-[var(--surface-card)] border border-solid border-1 {borderColor}"
+										class="h-[90px] mt-[5px] border border-solid border-1 {borderColor}"
 									/>
 								</div>
 							{/each}
@@ -408,7 +471,35 @@
 		<div class="content-wrapper relative max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
 			<div class="mt-[2.5rem]">
 				<div class="table-container min-h-[900px]">
-					<Table source={tableSimple} />
+					<div class="table-container">
+						<!-- Native Table Element -->
+						<table class="table table-hover table-comfortable">
+							<thead>
+								<tr>
+									<th>Position</th>
+									<th>Name</th>
+									<th>Symbol</th>
+									<th>Weight</th>
+								</tr>
+							</thead>
+							<tbody>
+								{#each sourceData as row}
+									<tr>
+										<td>{row.position}</td>
+										<td>{row.name}</td>
+										<td>{row.symbol}</td>
+										<td>{row.weight}</td>
+									</tr>
+								{/each}
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="3">Calculated Total Weight</th>
+									<td class="font-bold">{sum.toFixed(2)}</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -533,5 +624,9 @@
 		background-size: 150% 100%, cover;
 		background-image: linear-gradient(to bottom, #d9d6fc 10%, transparent 70%),
 			url('/src/images/light.png');
+	}
+
+	.table thead th {
+		white-space: nowrap;
 	}
 </style>

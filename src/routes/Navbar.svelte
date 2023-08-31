@@ -26,9 +26,15 @@
 			icon: 'fa-solid fa-cloud'
 		}
 	];
+	// const element = document.querySelectorAll(".lightswitch-track");
+	// element.addEventListener('click', function () {
+	// 	console.log('hello')
+	// });
+	// let modeButton = document.querySelector("lightswitch-track");
+	// console.log(modeButton);
 </script>
 
-<div class="client-layout-header">
+<div class="card client-layout-header">
 	<nav class="header-content">
 		<div class="flex justify-between">
 			<div class="layout-content-logo w-2/4">
@@ -45,7 +51,7 @@
 							<li
 								class="client-header-item inline-flex text-[#495057] items-center z-[1] px-5 lg:hidden"
 							>
-								<a {href}> <i class={icon} /> {title}</a>
+								<a {href} class="hover-underline-animation"> <i class={icon} /> {title}</a>
 							</li>
 						{/each}
 						<div class="flex items-center">
@@ -71,9 +77,7 @@
 										<span>Lightmode: </span><LightSwitch class="container" />
 									</div>
 									{#each navsContent as { title, href, icon }}
-										<li
-											class="client-header-item-popup py-1 container text-white items-center z-[1] px-1"
-										>
+										<li class="client-header-item-popup py-1 container items-center z-[1] px-1">
 											<a {href}> <i class={icon} /> {title}</a>
 										</li>
 									{/each}
@@ -227,6 +231,31 @@
 	.popup-ul {
 		height: 30px;
 	}
+	/* .client-header-item a{
+		transition: 0.1s;
+	} */
+	.client-header-item a {
+		position: relative;
+	}
+
+	.hover-underline-animation {
+		display: inline-block;
+		position: relative;
+	}
+
+	.hover-underline-animation::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: rgb(var(--color-secondary-500));
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	}
+
 	@media only screen and (max-width: 1023px) {
 		.client-header-item-popup {
 			visibility: visible;

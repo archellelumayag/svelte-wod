@@ -4,7 +4,11 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 	import '../app.css';
+	import Footer from './Footer.svelte';
 </script>
 
 <Navbar />
+
+
 <slot />
+<Footer />
