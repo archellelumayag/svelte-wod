@@ -26,12 +26,6 @@
 			icon: 'fa-solid fa-cloud'
 		}
 	];
-	// const element = document.querySelectorAll(".lightswitch-track");
-	// element.addEventListener('click', function () {
-	// 	console.log('hello')
-	// });
-	// let modeButton = document.querySelector("lightswitch-track");
-	// console.log(modeButton);
 </script>
 
 <div class="card client-layout-header">

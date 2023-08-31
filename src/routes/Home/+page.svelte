@@ -2,9 +2,6 @@
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import { popup } from '@skeletonlabs/skeleton';
-	import { Table } from '@skeletonlabs/skeleton';
-	import type { TableSource } from '@skeletonlabs/skeleton';
-	import { tableMapperValues } from '@skeletonlabs/skeleton';
 
 	const sourceData = [
 		{ position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -21,7 +18,9 @@
 		{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
 		{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
 		{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' }
+		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+
+		// { symbol: 'A', exchange: 'Boron', sector: 'Healthcare', change: '1.52 (1.28%)', currentPrice: 120, gfValue: 155.15, priceToGfValue: 0.77, dsScore: null, gfScore: 90.00, dividendYieldPercentHigh: 1.41, dividendYieldPercentHigh: 'low', dividendYieldPercen: 0.74,   }
 	];
 
 	let sum = 0;
@@ -29,94 +28,37 @@
 		sum += sourceData[i].weight;
 	}
 
-	// console.log(sum.toFixed(2));
+	const tableHead = [
+		{ name: 'Symbol', code: 'Symbol' },
+		{ name: 'Exchange', code: 'Exchange' },
+		{ name: 'Sector', code: 'Sector' },
+		{ name: 'Change', code: 'Change' },
+		{ name: 'Current Price', code: 'Current Price' },
+		{ name: 'GF Value', code: 'GF Value' },
+		{ name: 'Price-to-GF-Value', code: 'Price-to-GF-Value' },
+		{ name: 'DS Score', code: 'DS Score' },
+		{ name: 'GF Score', code: 'Symbol' },
+		{ name: 'Dividend Yield %(10 y High)', code: 'Dividend Yield %(10 y High)' },
+		{ name: 'Dividend Yield %(10 y Low)', code: 'Dividend Yield %(10 y Low)' },
+		{ name: 'Dividend Yield %', code: 'Dividend Yield %' },
+		{ name: 'Continuous Dividend Start Year', code: 'Continuous Dividend Start Year' },
+		{ name: 'Increase Dividend Start Year', code: 'Increase Dividend Start Year' },
+		{ name: 'Dividend Frequency', code: 'Dividend Frequency' },
+		{ name: 'Next Dividend Payment Amount', code: 'Next Dividend Payment Amount' },
+		{ name: 'Next Dividend Payment Date', code: 'Next Dividend Payment Date' },
+		{ name: 'Dividend Earned Since Purchase', code: 'Dividend Earned Since Purchase' },
+		{ name: 'Date Added', code: 'Date Added' },
+		{ name: 'Gain', code: 'Gain' }
+	];
 
-	// console.log(sourceData[0].name);
-	const tableSimple: TableSource = {
-		// A list of heading labels.
-		head: [
-			'Symbol',
-			'Exchange',
-			'Sector',
-			'Change',
-			'Current Price',
-			'GF Value',
-			'Price-to-GF-Value',
-			'DS Score',
-			'GF Score',
-			'Dividend Yield %(10 y High)',
-			'Dividend Yield %(10 y Low)',
-			'Dividend Yield %',
-			'Continuous Dividend Start Year',
-			'Increase Dividend Start Year',
-			'Dividend Frequency',
-			'Next Dividend Payment Amount',
-			'Next Dividend Payment Date',
-			'Dividend Earned Since Purchase',
-			'Date Added',
-			'Gain'
-		],
-		// The data visibly shown in your table body UI.
-		body: tableMapperValues(sourceData, [
-			'Symbol',
-			'Exchange',
-			'Sector',
-			'Change',
-			'Current Price',
-			'GF Value',
-			'Price-to-GF-Value',
-			'DS Score',
-			'GF Score',
-			'Dividend Yield %(10 y High)',
-			'Dividend Yield %(10 y Low)',
-			'Dividend Yield %',
-			'Continuous Dividend Start Year',
-			'Increase Dividend Start Year',
-			'Dividend Frequency',
-			'Next Dividend Payment Amount',
-			'Next Dividend Payment Date',
-			'Dividend Earned Since Purchase',
-			'Date Added',
-			'Gain'
-		]),
-		// Optional: The data returned when interactive is enabled and a row is clicked.
-		meta: tableMapperValues(sourceData, [
-			'position',
-			'Symbol',
-			'Exchange',
-			'Sector',
-			'Change',
-			'Current Price',
-			'GF Value',
-			'Price-to-GF-Value',
-			'DS Score',
-			'GF Score',
-			'Dividend Yield %(10 y High)',
-			'Dividend Yield %(10 y Low)',
-			'Dividend Yield %',
-			'Continuous Dividend Start Year',
-			'Increase Dividend Start Year',
-			'Dividend Frequency',
-			'Next Dividend Payment Amount',
-			'Next Dividend Payment Date',
-			'Dividend Earned Since Purchase',
-			'Date Added',
-			'Gain'
-		]),
-		// Optional: A list of footer labels.
-		foot: ['Total', '', '<code class="code">5</code>']
-	};
 	let isCompound = true;
 	const compoundToggle = () => {
 		document.getElementById('compound-btn');
-		// const toggleBtn = document.getElementById('compound-btn');
 
-		// let toggleText = toggleBtn?.textContent;
-		// console.log(toggleText);
 		if (isCompound) {
-			document.getElementById('compound-btn').textContent = 'No Compound';
+			document.getElementById('compound-btn')!.textContent = 'No Compound';
 		} else {
-			document.getElementById('compound-btn').textContent = 'Compound';
+			document.getElementById('compound-btn')!.textContent = 'Compound';
 		}
 		isCompound = !isCompound;
 		console.log(isCompound);
@@ -233,7 +175,7 @@
 					<div class="grid-cols-3 mb-5">
 						<div class="flex justify-center items-center rounded">
 							<div
-								class="border-animation relative overflow-hidden live-counter text-center p-[1rem]"
+								class="border-animation relative overflow-hidden live-counter text-center px-[16px] pb-[16px] pt-[25px] w-[336px]"
 							>
 								<span
 									class="absolute top-0 left-0 w-[100%] h-[2px] bg-gradient-to-r from-[#0c002b] to-[#7e63fb]"
@@ -247,8 +189,10 @@
 								<span
 									class="absolute top-0 left-0 w-[2px] h-[100%] bg-gradient-to-t from-[#0c002b] to-[#7e63fb]"
 								/>
-								<p class="text-[40px] text-color">1234567</p>
-								<p class="text-sm text-color font-medium pt-4">
+								<!-- <label class="text-[40px] h-[40px] text-color font-bold">1234567</label> -->
+
+								<label class="text-[40px]">1234567</label>
+								<p class="text-[12px] text-color">
 									Current year counter passive income from dividend.
 								</p>
 							</div>
@@ -264,7 +208,7 @@
 						</div>
 						<div class="w-[auto] min-h-[130px] flex items-start pt-[15px] justify-end mr-5">
 							<div class="z-[2] text-end mb-[50px]">
-								<label class="text-[20px] font-bold text-color">$1,570</label>
+								<label class="text-[20px] font-[700]">$1,570</label>
 								<p class="text-color">Total Invested</p>
 							</div>
 						</div>
@@ -307,7 +251,10 @@
 								<label class="text-[20px] font-bold text-color">Buy Bitcoin</label>
 								<p class="text-color">On Etoro</p>
 								<br />
-								<button type="button" class="rounded-[5px] btn variant-filled-primary w-[100px] text-white">Buy</button>
+								<button
+									type="button"
+									class="rounded-[5px] btn variant-filled-primary w-[100px] text-white">Buy</button
+								>
 							</div>
 						</div>
 					</div>
@@ -364,7 +311,7 @@
 									</button>
 
 									<div
-										class="card shadow-xl py-2 z-[5] w-container absolute w-[90%]"
+										class="card max-h-[500px] shadow-xl py-2 z-[5] w-container absolute w-[90%]"
 										data-popup="repeatPurchasePopup"
 									>
 										<ListBox rounded="rounded-none">
@@ -386,7 +333,7 @@
 									</button>
 
 									<div
-										class="card shadow-xl z-[5] py-2 absolute w-[90%]"
+										class="card max-h-[300px] overflow-y-scroll shadow-xl z-[5] py-2 absolute w-[90%]"
 										data-popup="accumulatePopup"
 									>
 										<ListBox rounded="rounded-none">
@@ -406,7 +353,7 @@
 									</button>
 
 									<div
-										class="card shadow-xl z-[5] py-2 absolute w-[90%]"
+										class="card max-h-[300px] overflow-y-scroll shadow-xl z-[5] py-2 absolute w-[90%]"
 										data-popup="startingPopup"
 									>
 										<ListBox rounded="rounded-none">
@@ -426,7 +373,7 @@
 									</button>
 
 									<div
-										class="card shadow-xl py-2 z-[5] absolute w-[90%]"
+										class="card max-h-[300px] shadow-xl py-2 z-[5] absolute w-[90%]"
 										data-popup="compareAssetsPopup"
 									>
 										<ListBox rounded="rounded-none">
@@ -456,9 +403,7 @@
 							{#each months as { name, sName, borderColor }}
 								<div class="text-center">
 									<label class="text-[16px]">{sName}</label>
-									<div
-										class="h-[90px] mt-[5px] border border-solid border-1 {borderColor}"
-									/>
+									<div class="h-[90px] mt-[5px] border border-solid border-1 {borderColor}" />
 								</div>
 							{/each}
 						</div>
@@ -476,10 +421,9 @@
 						<table class="table table-hover table-comfortable">
 							<thead>
 								<tr>
-									<th>Position</th>
-									<th>Name</th>
-									<th>Symbol</th>
-									<th>Weight</th>
+									{#each tableHead as { name }}
+										<th>{name}</th>
+									{/each}
 								</tr>
 							</thead>
 							<tbody>
@@ -628,5 +572,9 @@
 
 	.table thead th {
 		white-space: nowrap;
+	}
+	::-webkit-scrollbar-track {
+		border-radius: 10px;
+		/* margin-left: -10px; */
 	}
 </style>
