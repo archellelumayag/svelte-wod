@@ -18,7 +18,7 @@
 		{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
 		{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
 		{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+		{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' }
 
 		// { symbol: 'A', exchange: 'Boron', sector: 'Healthcare', change: '1.52 (1.28%)', currentPrice: 120, gfValue: 155.15, priceToGfValue: 0.77, dsScore: null, gfScore: 90.00, dividendYieldPercentHigh: 1.41, dividendYieldPercentHigh: 'low', dividendYieldPercen: 0.74,   }
 	];
@@ -148,6 +148,10 @@
 	let compareVal: string;
 	let riskVal: string;
 
+	// const switchMode = document.querySelectorAll('lightswitch-track');
+
+	// switchMode.addEventListener("click", myFunction);
+
 	const months = [
 		{ name: 'January', sName: 'Jan', borderColor: 'border-[#b181a0]', mm: 1 },
 		{ name: 'Febuary', sName: 'Feb', borderColor: 'border-[#d7817d]', mm: 2 },
@@ -162,15 +166,30 @@
 		{ name: 'November', sName: 'Nov', borderColor: 'border-[var(--text-color)]  ', mm: 11 },
 		{ name: 'December', sName: 'Dec', borderColor: 'border-[var(--text-color)]', mm: 12 }
 	];
+
+	// document.querySelectorAll('lightswitch-track').addEventListener('click', function () {
+	// 	console.log('test');
+	// });
+	// var htmlElement = document.querySelector('html');
+	// let getHtml = document.documentElement.outerHTML
+	// if(getHtml)
+
+	// if (document.querySelector('html')!.classList.contains('dark')) {
+	// 	console.log('dark mode');
+	// } else {
+	// 	console.log('light mode');
+	// }
 </script>
 
 <div class="mt-[83px]">
-	<section
+	<section id="home-section-1"
 		class="home-section bg-section card relative pb-28 bg-fixed bg-repeat bg-[length:150%_100%] home-section-lightmode-before"
 	>
 		<div class="content-wrapper max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
 			<div class="pt-[130px]">
-				<div class="mb-8 text-center text-color text-[25px]">Dollar Cost Averaging Bitcoin</div>
+				<div class="mb-8 text-center text-color text-[25px] text-[var(--text-color)]">
+					Dollar Cost Averaging Bitcoin
+				</div>
 				<div class="row-auto justify-center">
 					<div class="grid-cols-3 mb-5">
 						<div class="flex justify-center items-center rounded">
@@ -191,8 +210,8 @@
 								/>
 								<!-- <label class="text-[40px] h-[40px] text-color font-bold">1234567</label> -->
 
-								<label class="text-[40px]">1234567</label>
-								<p class="text-[12px] text-color">
+								<label class="text-[40px] text-[var(--text-color)]">1234567</label>
+								<p class="text-[12px] text-[var(--text-color)]">
 									Current year counter passive income from dividend.
 								</p>
 							</div>
@@ -200,7 +219,9 @@
 					</div>
 				</div>
 				<div class="grid mt-[50px] grid-cols-4 gap-5 lg:grid-cols-2 md:grid-cols-1">
-					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
+					<div
+						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
@@ -209,11 +230,13 @@
 						<div class="w-[auto] min-h-[130px] flex items-start pt-[15px] justify-end mr-5">
 							<div class="z-[2] text-end mb-[50px]">
 								<label class="text-[20px] font-[700]">$1,570</label>
-								<p class="text-color">Total Invested</p>
+								<p class="text-color total-text">Total Invested</p>
 							</div>
 						</div>
 					</div>
-					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
+					<div
+						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
@@ -227,7 +250,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
+					<div
+						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
@@ -240,7 +265,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px]">
+					<div
+						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
 						>
@@ -289,10 +316,10 @@
 						</div>
 						<div class="dca-card card bg-[#fff] text-color rounded-[5px]">
 							<div class="rounded-[5px] py-[10px]">
-								<h2 class="ps-5 mb-6">DCA Settings</h2>
+								<h2 class="ps-5 mb-6 text-[var(--text-color)]">DCA Settings</h2>
 								<div class="px-5 mb-[10px]">
 									<label class="label">
-										<span>Purchase Amount</span>
+										<span class=" text-[var(--text-color)]">Purchase Amount</span>
 										<div class="flex relative">
 											<i
 												class="absolute z-[1] text-[20px] fa-solid fa-dollar-sign mt-[10px] ms-[15px]"
@@ -302,7 +329,7 @@
 									</label>
 								</div>
 								<div class="px-5 mb-[10px] relative">
-									<label class="text-[16px]">Repeat a Purchase</label>
+									<label class="text-[16px] text-[var(--text-color)]">Repeat a Purchase</label>
 									<button
 										class="btn variant-filled-secondary container justify-between hover:z-[1]"
 										use:popup={repeatPurchasePopup}
@@ -324,7 +351,7 @@
 									</div>
 								</div>
 								<div class="px-5 mb-[10px] relative">
-									<label class="text-[16px]">Accumulate For</label>
+									<label class="text-[16px] text-[var(--text-color)]">Accumulate For</label>
 									<button
 										class="btn variant-filled-secondary container justify-between hover:z-[1]"
 										use:popup={accumulatePopup}
@@ -344,7 +371,7 @@
 									</div>
 								</div>
 								<div class="px-5 mb-[10px] relative">
-									<label class="text-[16px]">Starting</label>
+									<label class="text-[16px] text-[var(--text-color)]">Starting</label>
 									<button
 										class="btn variant-filled-secondary container justify-between hover:z-[1"
 										use:popup={startingPopup}
@@ -364,7 +391,9 @@
 									</div>
 								</div>
 								<div class="px-5 mb-[10px] relative">
-									<label class=" text-[16px]">Compare to other assets?</label>
+									<label class=" text-[16px] text-[var(--text-color)]"
+										>Compare to other assets?</label
+									>
 									<button
 										class="btn variant-filled-secondary container justify-between hover:z-[1"
 										use:popup={compareAssetsPopup}
@@ -395,14 +424,14 @@
 						<div
 							class="dca-year h-[90px] w-auto flex justify-center items-center border border-solid border-1 border-[var(--text-color)]"
 						>
-							<label class="text-[16px]">2013</label>
+							<label class="text-[16px] text-[var(--text-color)]">2013</label>
 						</div>
 					</div>
 					<div class="col-start-2 col-end-11 lg:col-auto">
 						<div class="grid grid-cols-12 lg:grid-cols-6 md:grid-cols-4 gap-3">
 							{#each months as { name, sName, borderColor }}
 								<div class="text-center">
-									<label class="text-[16px]">{sName}</label>
+									<label class="text-[16px] text-[var(--text-color)]">{sName}</label>
 									<div class="h-[90px] mt-[5px] border border-solid border-1 {borderColor}" />
 								</div>
 							{/each}
@@ -452,10 +481,15 @@
 
 <style>
 	.bg-section {
+		background-image: linear-gradient(to right, var(--primary-color) 25%, transparent 100%),
+			linear-gradient(to bottom, var(--primary-color) 3%, transparent 30%),
+			url('/src/images/osmosis-home-bg-pattern_1.svg');
+	}
+	/* .bg-section {
 		background-image: linear-gradient(to right, #fff 25%, transparent 100%),
 			linear-gradient(to bottom, #fff 3%, transparent 30%),
 			url('/src/images/osmosis-home-bg-pattern_1.svg');
-	}
+	} */
 	.border-animation span:nth-child(1) {
 		animation: bd-animate-span-1 2s linear infinite;
 	}

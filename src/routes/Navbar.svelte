@@ -2,6 +2,7 @@
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import type { ChangeEventHandler } from 'svelte/elements';
 
 	const popupClick: PopupSettings = {
 		event: 'click',
@@ -26,6 +27,45 @@
 			icon: 'fa-solid fa-cloud'
 		}
 	];
+
+	// const toggleSwitch = document.querySelector('.client-header-item');
+	// console.log(toggleSwitch);
+
+	// function switchTheme(e ) {
+	//     if (e.target.checked) {
+	//         document.documentElement.setAttribute('data-theme', 'dark');
+	//     }
+	//     else {
+	//         document.documentElement.setAttribute('data-theme', 'light');
+	//     }
+	// }
+
+	// toggleSwitch!.addEventListener('change', switchTheme, false);
+
+	function toggleMode() {
+		console.log('clicked');
+		const checkWeb = document.querySelector('path');
+		// checkWeb!.getAttribute("d")
+		// let text = checkWeb!.getAttribute("data-theme2");
+		const toggleHTML = document.querySelector('html');
+
+		toggleHTML!.setAttribute('name', 'helloButton');
+		const iconMode = checkWeb!.getAttribute('d');
+		let section1Id = document.getElementById('home-section-1');
+		if (
+			iconMode ==
+			'M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z'
+		) {
+			toggleHTML!.setAttribute('data-theme2', 'dark');
+
+			section1Id!.classList.remove('home-section-lightmode-before');
+			section1Id!.classList.add('home-section-darkmode-before');
+		} else {
+			toggleHTML!.setAttribute('data-theme2', 'light');
+			section1Id!.classList.remove('home-section-lightmode-before');
+			section1Id!.classList.add('home-section-darkmode-before');
+		}
+	}
 </script>
 
 <div class="card client-layout-header">
@@ -45,7 +85,9 @@
 							<li
 								class="client-header-item inline-flex text-[#495057] items-center z-[1] px-5 lg:hidden"
 							>
-								<a {href} class="hover-underline-animation"> <i class={icon} /> {title}</a>
+								<a {href} class="hover-underline-animation text-[var(--text-color)]">
+									<i class={icon} /> {title}</a
+								>
 							</li>
 						{/each}
 						<div class="flex items-center">
@@ -68,7 +110,7 @@
 								<div class="arrow variant-filled-surface" />
 								<ul class="popup-ul">
 									<div class="flex justify-between py-1 px-1">
-										<span>Lightmode: </span><LightSwitch class="container" />
+										<span>Lightmode: </span><LightSwitch on:click={toggleMode} />
 									</div>
 									{#each navsContent as { title, href, icon }}
 										<li class="client-header-item-popup py-1 container items-center z-[1] px-1">
@@ -112,7 +154,7 @@
 		z-index: 997;
 		top: 0;
 		position: fixed;
-		background-color: white;
+		background-color: var(--primary-color);
 		box-shadow: 0 0.15rem 1.75rem 0 rgb(0 0 0 / 15%);
 		width: 100%;
 	}
@@ -144,7 +186,7 @@
 		width: 75px;
 		height: 95px;
 		transform: rotate(-35deg);
-		background-color: white !important;
+		background-color: var(--primary-color);
 	}
 
 	.logo-normal {
@@ -160,7 +202,7 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 5;
-		background-color: white !important;
+		background-color: var(--primary-color);
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 		padding-left: 40px;
@@ -175,7 +217,7 @@
 		display: flex;
 		position: relative;
 		padding: 0px 40px 0px 16px;
-		background-color: white;
+		background-color: var(--primary-color);
 	}
 
 	.client-layout-menu-items:before {
@@ -186,7 +228,7 @@
 		height: 95px;
 		top: -25px;
 		transform: rotate(-35deg);
-		background-color: white !important;
+		background-color: var(--primary-color);
 	}
 
 	.hover-underline-animation {
