@@ -220,7 +220,7 @@
 				</div>
 				<div class="grid mt-[50px] grid-cols-4 gap-5 lg:grid-cols-2 md:grid-cols-1">
 					<div
-						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+						class="dca-card-1 h-[136px] bg-[var(--card-color)] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
 					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
@@ -235,7 +235,7 @@
 						</div>
 					</div>
 					<div
-						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+						class="dca-card-1 h-[136px] bg-[var(--card-color)] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
 					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
@@ -251,7 +251,7 @@
 						</div>
 					</div>
 					<div
-						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+						class="dca-card-1 h-[136px] bg-[var(--card-color)] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
 					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
@@ -266,7 +266,7 @@
 						</div>
 					</div>
 					<div
-						class="dca-card-1 h-[136px] card bg-[#fff] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
+						class="dca-card-1 h-[136px] bg-[var(--card-color)] relative rounded-[5px] text-[12px] text-[var(--text-color)]"
 					>
 						<div
 							class="h-[70px] w-[70px] variant-filled-secondary rounded-[5px] absolute mt-[-25px] ml-[10px] flex items-center justify-center"
@@ -303,7 +303,7 @@
 									</button>
 								</div>
 								<div
-									class="card shadow-xl w-[50%] py-2 z-[5] w-container absolute"
+									class="bg-[var(--card-color)] shadow-xl w-[50%] py-2 z-[5] w-container absolute"
 									data-popup="riskPopup"
 								>
 									<ListBox rounded="rounded-none">
@@ -314,7 +314,7 @@
 								</div>
 							</span>
 						</div>
-						<div class="dca-card card bg-[#fff] text-color rounded-[5px]">
+						<div class="dca-card bg-[var(--card-color)] text-color rounded-[5px]">
 							<div class="rounded-[5px] py-[10px]">
 								<h2 class="ps-5 mb-6 text-[var(--text-color)]">DCA Settings</h2>
 								<div class="px-5 mb-[10px]">
@@ -416,7 +416,7 @@
 						</div>
 					</div>
 					<div
-						class="card bg-[#fff] dca-portfolio h-[460px] col-start-2 col-end-5 lg:col-auto rounded-[5px] shadow-md"
+						class="bg-[var(--card-color)] dca-portfolio h-[460px] col-start-2 col-end-5 lg:col-auto rounded-[5px] shadow-md"
 					/>
 				</div>
 				<div class="grid third-section grid-cols-10 lg:grid-cols-1 mt-10 gap-5">
@@ -441,7 +441,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="home-section-1 bg-no-repeat relative pb-[40px] pt-[10px]">
+	<section id="home-section-2" class="home-section-1 bg-no-repeat relative pb-[40px] pt-[10px]">
 		<div class="content-wrapper relative max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
 			<div class="mt-[2.5rem]">
 				<div class="table-container min-h-[900px]">
@@ -481,8 +481,8 @@
 
 <style>
 	.bg-section {
-		background-image: linear-gradient(to right, var(--primary-color) 25%, transparent 100%),
-			linear-gradient(to bottom, var(--primary-color) 3%, transparent 30%),
+		background-image: linear-gradient(to right, var(--bg-color2) 25%, transparent 100%),
+			linear-gradient(to bottom, var(--bg-color2) 3%, transparent 30%),
 			url('/src/images/osmosis-home-bg-pattern_1.svg');
 	}
 	/* .bg-section {
@@ -602,6 +602,11 @@
 		background-size: 150% 100%, cover;
 		background-image: linear-gradient(to bottom, #d9d6fc 10%, transparent 70%),
 			url('/src/images/light.png');
+	}
+	.home-section-1-darkmode {
+		background-size: 150% 100%, cover;
+		background-image: linear-gradient(to bottom, #1B2739 10%, transparent 70%),
+			url('/src/images/dark.png');
 	}
 
 	.table thead th {

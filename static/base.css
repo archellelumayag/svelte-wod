@@ -1,20 +1,24 @@
 :root{
 	--primary-font: "Poppins", sans-serif;
-	--primary-color: #FFFFFF;
+	--primary-color: #FFFFFF !important;
     --secondary-color: #536390;
     --font-color: #424242;
     --bg-color: #fff;
+	--bg-color2: #fff;
     --heading-color: #292922;
 	--text-color: #5e5e5e;
+	--card-color: #FFFFFF;
 }
 
 [data-theme2="dark"] {
-    --primary-color: #162132;
+    --primary-color: #162132 !important;
     --secondary-color: #818cab;
     --font-color: #e1e1ff;
     --bg-color: #161625;
+	--bg-color2: #162132;
     --heading-color: #818cab;
 	--text-color: #FFFFFF;
+	--card-color: #2C3656;
 }
 
 html,
